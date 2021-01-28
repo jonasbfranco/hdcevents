@@ -60,3 +60,89 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+//==============================================================================//
+
+Quando ocorrer o erro, é porque 
+SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add unique `users_email_unique`(`email`))
+
+
+
+Laravel usa o conjunto de caracteres utf8mb4 por padrão, que inclui suporte para armazenar "emojis" 
+no banco de dados. Se você estiver executando uma versão do MySQL mais antiga do que a versão 5.7.7 
+ou MariaDB anterior à versão 10.2.2, talvez seja necessário configurar manualmente o comprimento da 
+string padrão gerado pelas migrações para que o MySQL crie índices para elas. Você pode configurar 
+isso chamando o método Schema::defaultStringLength no AppServiceProvider:
+
+Para resolver isso siga os passos abaixo:
+
+Edite o arquivo app\Providers\AppServiceProvider.php
+
+Adicione o namespace use Illuminate\Support\Facades\Schema;
+
+Dentro do método boot adicione Schema::defaultStringLength(191);
+
+Resultado final do arquivo:
+
+```bash
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+```
+
+
+//==============================================================================//
+
+
+
+# Comandos usados nestas Aulas
+
+- Criar Banco de dados
+- Setar banco de dados no arquivo .env
+
+### Iniciar as Migrations (criar as tabelas)
+$ php artisan migrate
+
+### Criar novas Migrations
+$ php artisan make:migration create_products_table
+
+### Verificar como estao as migrations
+$ php artisan migrate:status
+
+### Atualizar tabelas existente
+$ php artisan migrate:fresh
+
+### Criar um Scheca Table para a tabela Products
+$ php artisan make:migration add_category_to_products_table
+
+### Exibir o status
+$ php artisan migrate:status
+
+### Criar este Schema (coluna na tabela)
+$ php artisan migrate
+
+### Voltar ao status antes de inserir a coluna na tabela)
+$ php artisan migrate:rollback
+
+### Zerar todas as migrate
+$ php artisan migrate:reset
+$ php artisan migrate:status
+
+### Fazer rollback e fazer migrate
+$ php artisan migrate:refresh
+
+### Apagar as tabelas e fazer migrate
+$ php artisan migrate:fresh
+
+### Criar a migration Event
+$ php artisan make:migration create_events_table
+$ php artisan migrate:status
+$ php artisan migrate
+
+### Criar o Model Event
+$ php artisan make:model Event

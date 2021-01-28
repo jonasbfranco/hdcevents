@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+//inserido porque estou usando uma versao do mysql antiga
+use Illuminate\Support\Facades\Schema;
+
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //inserido porque estou usando uma versao do mysql antiga
+        Schema::defaultStringLength(191);
     }
 }
