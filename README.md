@@ -99,7 +99,7 @@ public function boot()
 
 * * *
 
-### QUando baixar os arquivos
+### Quando baixar os arquivos
 ```bash
 - $ composer install
 - $ php -r "copy('.env.example', '.env');"
@@ -192,7 +192,10 @@ $ php artisan make:migration add_image_to_events_table
 ### Adicionar estas linhas na migration criada
 - function up()
 - table->string('image');
+
 <br>
+<br>
+
 - function down()
 - table->dropColumn('image');
 
