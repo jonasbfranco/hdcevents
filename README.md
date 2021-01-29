@@ -146,3 +146,14 @@ $ php artisan migrate
 
 ### Criar o Model Event
 $ php artisan make:model Event
+
+
+### Adicionar campo na tabela existente
+$ php artisan make:migration add_image_to_events_table
+
+### Adicionar estas linhas na migration criada
+$table->string('image');
+$table->dropColumn('image');
+
+### Criar o campo
+$ php artisan migrate

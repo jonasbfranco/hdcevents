@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="/css/styles.css">
 
         <!-- Scripts Customizado -->    
-        <script src="/js/scripts.js"></script>
+        <script src="js/scripts.js"></script>
 
 
 
@@ -48,7 +48,18 @@
                 </div>
             </nav>
         </header>
-        @yield('content')
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                <div class="teste">
+                    @if(session('msg'))
+                            <p class="msg">{{ session('msg') }}</p>
+                        @endif
+                </div>    
+                @yield('content')
+                </div>
+            </div>
+        </main>
         <footer>
             <p>HDC Events &copy; 2021</p>
         </footer>
