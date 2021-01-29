@@ -8,17 +8,29 @@ use App\Models\Event;
 
 class EventController extends Controller
 {
-   public function index() {
+   
+    //===================================
+    //View Index, retonar todos os valores
+    public function index() {
     
     $events = Event::all();
 
     return view('welcome', ['events' => $events]);
    }
 
+
+
+    //===================================
+    //View create, exibe a tela do formulario
    public function create() {
+    
     return view('events.create');
+
    }
 
+
+    //===================================
+    //View store, insere dados no banco
    public function store(Request $request){
 
       $event = new Event;
@@ -46,6 +58,17 @@ class EventController extends Controller
       $event->save();
 
       return redirect('/')->with('msg', 'Evento criado com sucesso!');
+
+   }
+
+
+    //===================================
+    //View show, exibe dados cadastrados no banco
+   public function show ($id) {
+
+    $event = Event::findOrFail($id);
+
+    return view('events.show', ['event' => $event]);
 
    }
 

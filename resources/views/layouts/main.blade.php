@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="/css/styles.css">
 
         <!-- Scripts Customizado -->    
-        <script src="js/scripts.js"></script>
+        <script src="/js/scripts.js"></script>
 
 
 
