@@ -63,7 +63,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 
-//==============================================================================//
+* * *
+
 
 Quando ocorrer o erro, é porque 
 SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add unique `users_email_unique`(`email`))
@@ -96,8 +97,18 @@ public function boot()
 ```
 
 
-//==============================================================================//
+* * *
 
+### QUando baixar os arquivos
+```bash
+- $ composer install
+- $ php -r "copy('.env.example', '.env');"
+	ou
+- $ @php -r "file_exists('.env') || copy('.env.example', '.env');"
+- $ php artisan key:generate
+    (configurar o arquivo .env, linha = DB_DATABASE=nome do banco de daos)
+- $ php artisan migrate
+```
 
 
 # Comandos usados nestas Aulas
@@ -106,54 +117,86 @@ public function boot()
 - Setar banco de dados no arquivo .env
 
 ### Iniciar as Migrations (criar as tabelas)
+```bash
 $ php artisan migrate
+```
 
 ### Criar novas Migrations
+```bash
 $ php artisan make:migration create_products_table
+```
 
 ### Verificar como estao as migrations
+```bash
 $ php artisan migrate:status
+```
 
 ### Atualizar tabelas existente
+```bash
 $ php artisan migrate:fresh
+```
 
 ### Criar um Scheca Table para a tabela Products
+```bash
 $ php artisan make:migration add_category_to_products_table
+```
 
 ### Exibir o status
+```bash
 $ php artisan migrate:status
+```
 
 ### Criar este Schema (coluna na tabela)
+```bash
 $ php artisan migrate
+```
 
 ### Voltar ao status antes de inserir a coluna na tabela)
+```bash
 $ php artisan migrate:rollback
+```
 
 ### Zerar todas as migrate
+```bash
 $ php artisan migrate:reset
 $ php artisan migrate:status
+```
 
 ### Fazer rollback e fazer migrate
+```bash
 $ php artisan migrate:refresh
+```
 
 ### Apagar as tabelas e fazer migrate
+```bash
 $ php artisan migrate:fresh
+```
 
 ### Criar a migration Event
+```bash
 $ php artisan make:migration create_events_table
 $ php artisan migrate:status
 $ php artisan migrate
+```
 
 ### Criar o Model Event
+```bash
 $ php artisan make:model Event
-
+```
 
 ### Adicionar campo na tabela existente
+```bash
 $ php artisan make:migration add_image_to_events_table
+```
 
 ### Adicionar estas linhas na migration criada
-$table->string('image');
-$table->dropColumn('image');
+- function up()
+- table->string('image');
+<br>
+- function down()
+- table->dropColumn('image');
 
 ### Criar o campo
+```bash
 $ php artisan migrate
+```
