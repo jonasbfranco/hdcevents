@@ -225,3 +225,8 @@ $ npm install && npm run dev
 ```bash
 $ php artisan make:migration add_user_id_to_events_table
 ```
+
+### Criar tabela event_user
+```bash
+$ php artisan make:migration create_event_user_table
+```
