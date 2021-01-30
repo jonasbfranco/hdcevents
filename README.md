@@ -184,7 +184,7 @@ $ php artisan migrate
 $ php artisan make:model Event
 ```
 
-### Adicionar campo na tabela existente
+### Adicionar campo image na tabela existente(events)
 ```bash
 $ php artisan make:migration add_image_to_events_table
 ```
@@ -202,4 +202,26 @@ $ php artisan make:migration add_image_to_events_table
 ### Criar o campo
 ```bash
 $ php artisan migrate
+```
+
+### Adicionar campo itens na tabela existente(events) para receber json
+```bash
+$ php artisan make:migration add_itens_to_events_table
+```
+
+### Adicionar campo date na tabela existente(events)
+```bash
+$ php artisan make:migration add_date_to_events_table
+```
+
+### Instalar autenticacao Jetstream && Livewire
+```bash
+$ composer require laravel/jetstream
+$ php artisan jetstream:install livewire
+$ npm install && npm run dev
+```
+
+### Adicionar campo user_id na tabela existente(events)
+```bash
+$ php artisan make:migration add_user_id_to_events_table
 ```
