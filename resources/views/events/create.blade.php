@@ -10,7 +10,7 @@
         @csrf
         <div class="form-group">
             <label for="image">Imagem do Evento:</label>
-            <input type="file" class="form-control-file" id="image" name="image">
+            <input type="file" class="form-control-file" id="image" name="image" required>
         </div>
         <div class="form-group">
             <label for="title">Evento:</label>
